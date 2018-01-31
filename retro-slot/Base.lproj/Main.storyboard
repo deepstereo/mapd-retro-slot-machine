@@ -1,24 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="zig.ttf">
+            <string>Zig</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="retro_slot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWu-Fb-DIM">
+                                <rect key="frame" x="16" y="44" width="77" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="wit-WG-sLo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zig" family="Zig" pointSize="12"/>
+                                <state key="normal" title="sound on">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8E-xD-fBe">
+                                <rect key="frame" x="320" y="44" width="39" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JGQ-CJ-3RI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zig" family="Zig" pointSize="12"/>
+                                <state key="normal" title="quit">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs3-mD-GFY">
+                                <rect key="frame" x="163.66666666666666" y="44" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4S6-wf-cyg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Zig" family="Zig" pointSize="12"/>
+                                <state key="normal" title="reset">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="g2k-qx-GAO">
+                                <rect key="frame" x="0.0" y="679" width="375" height="133"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="133" id="Mga-iH-ATV"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eiq-mJ-eDS">
+                                <rect key="frame" x="80.666666666666686" y="611" width="214" height="60"/>
+                                <state key="normal" image="spin"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z49-SH-vfH">
+                                <rect key="frame" x="27.666666666666657" y="513" width="320" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REz-yM-ZJk">
+                                        <rect key="frame" x="0.0" y="15" width="100" height="50"/>
+                                        <state key="normal" image="bet10"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pox-oc-QDK">
+                                        <rect key="frame" x="110" y="15" width="100" height="50"/>
+                                        <state key="normal" image="bet20"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0F-bZ-YrY">
+                                        <rect key="frame" x="220" y="15" width="100" height="50"/>
+                                        <state key="normal" image="bet30"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you lost!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33Z-5r-jAF">
+                                <rect key="frame" x="58" y="452" width="259" height="36"/>
+                                <fontDescription key="fontDescription" name="Zig" family="Zig" pointSize="36"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtf-6A-2FT">
+                                <rect key="frame" x="0.0" y="211" width="375" height="216"/>
+                            </pickerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftCloud" translatesAutoresizingMaskIntoConstraints="NO" id="KUH-he-K1d">
+                                <rect key="frame" x="0.0" y="82" width="105" height="135"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightCloud" translatesAutoresizingMaskIntoConstraints="NO" id="2Ps-AO-gEV">
+                                <rect key="frame" x="273" y="89" width="102" height="143"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Bwx-Qt-qsE">
+                                <rect key="frame" x="141" y="118.66666666666667" width="93" height="52.333333333333329"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0J-FM-vK9">
+                                        <rect key="frame" x="0.0" y="0.0" width="93" height="18"/>
+                                        <fontDescription key="fontDescription" name="Zig" family="Zig" pointSize="18"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEf-td-1Mu">
+                                        <rect key="frame" x="0.0" y="22.999999999999986" width="93" height="29.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="Zig" family="Zig" pointSize="29"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.38431372549019605" green="0.52156862745098043" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WWu-Fb-DIM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2wk-oB-5Ue"/>
+                            <constraint firstItem="Eiq-mJ-eDS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Cz-lV-WzU"/>
+                            <constraint firstItem="g2k-qx-GAO" firstAttribute="top" secondItem="Eiq-mJ-eDS" secondAttribute="bottom" constant="8" id="6Bj-Ix-GWW"/>
+                            <constraint firstItem="2Ps-AO-gEV" firstAttribute="top" secondItem="b8E-xD-fBe" secondAttribute="bottom" constant="15" id="7xW-tF-rxj"/>
+                            <constraint firstItem="KUH-he-K1d" firstAttribute="top" secondItem="WWu-Fb-DIM" secondAttribute="bottom" constant="8" id="AHf-mx-AS2"/>
+                            <constraint firstItem="KUH-he-K1d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ejj-xo-XSS"/>
+                            <constraint firstItem="g2k-qx-GAO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FCe-eF-kW8"/>
+                            <constraint firstItem="jtf-6A-2FT" firstAttribute="top" secondItem="Bwx-Qt-qsE" secondAttribute="bottom" constant="40" id="H1l-xV-Da6"/>
+                            <constraint firstItem="z49-SH-vfH" firstAttribute="top" secondItem="33Z-5r-jAF" secondAttribute="bottom" constant="25" id="J61-sM-Y4W"/>
+                            <constraint firstItem="rs3-mD-GFY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KDv-4n-rse"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WWu-Fb-DIM" secondAttribute="trailing" constant="20" symbolic="YES" id="UHk-Zg-GNa"/>
+                            <constraint firstItem="jtf-6A-2FT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="211" id="VrC-xO-7H6"/>
+                            <constraint firstItem="b8E-xD-fBe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="Xr3-G9-Gyr"/>
+                            <constraint firstItem="g2k-qx-GAO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="aKb-bf-HR1"/>
+                            <constraint firstItem="Eiq-mJ-eDS" firstAttribute="top" secondItem="z49-SH-vfH" secondAttribute="bottom" constant="18" id="agC-Qy-pRO"/>
+                            <constraint firstItem="Bwx-Qt-qsE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="agr-37-qod"/>
+                            <constraint firstItem="b8E-xD-fBe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cye-6b-yBe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b8E-xD-fBe" secondAttribute="trailing" constant="16" id="ddx-qh-4iB"/>
+                            <constraint firstAttribute="bottom" secondItem="g2k-qx-GAO" secondAttribute="bottom" id="evf-N2-rXl"/>
+                            <constraint firstItem="rs3-mD-GFY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="g7m-Ed-Q8S"/>
+                            <constraint firstItem="jtf-6A-2FT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hmc-tZ-ybQ"/>
+                            <constraint firstItem="WWu-Fb-DIM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="iIG-aR-vm5"/>
+                            <constraint firstItem="33Z-5r-jAF" firstAttribute="top" secondItem="jtf-6A-2FT" secondAttribute="bottom" constant="25" id="m2D-1i-vdH"/>
+                            <constraint firstItem="jtf-6A-2FT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="met-Dn-HUg"/>
+                            <constraint firstItem="2Ps-AO-gEV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rhI-pq-Vs3"/>
+                            <constraint firstItem="z49-SH-vfH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="woZ-Te-g7D"/>
+                            <constraint firstItem="33Z-5r-jAF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xHL-ba-giJ"/>
+                            <constraint firstItem="jtf-6A-2FT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Bwx-Qt-qsE" secondAttribute="bottom" constant="40" id="yCr-6w-RDM"/>
+                            <constraint firstItem="jtf-6A-2FT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="z2j-yo-5y6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="33.251231527093594"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bet10" width="100" height="50"/>
+        <image name="bet20" width="100" height="50"/>
+        <image name="bet30" width="100" height="50"/>
+        <image name="bottom" width="375" height="133"/>
+        <image name="leftCloud" width="105" height="135"/>
+        <image name="rightCloud" width="102" height="143"/>
+        <image name="spin" width="214" height="60"/>
+    </resources>
 </document>
