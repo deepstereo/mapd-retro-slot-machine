@@ -10,6 +10,16 @@ import UIKit
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
     var images = [UIImage()]
     var bet = 0
     
