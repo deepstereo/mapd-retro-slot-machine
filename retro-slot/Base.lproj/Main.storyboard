@@ -140,6 +140,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eiq-mJ-eDS">
                                         <rect key="frame" x="0.0" y="55" width="214" height="60"/>
                                         <state key="normal" image="spin"/>
+                                        <connections>
+                                            <action selector="spin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iyD-uk-M6b"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -178,6 +181,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="betButton" destination="REz-yM-ZJk" id="TLy-BU-Erb"/>
                         <outlet property="minusButton" destination="4Wp-iS-9C3" id="UNS-Uh-BbB"/>
                         <outlet property="plusButton" destination="Nzl-Sh-6jq" id="nR5-uY-fwa"/>
                         <outlet property="scoreLabel" destination="BEf-td-1Mu" id="bhg-XT-Htu"/>
