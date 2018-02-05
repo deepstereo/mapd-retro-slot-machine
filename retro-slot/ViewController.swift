@@ -13,6 +13,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     var player: AVAudioPlayer!
     var fxPlayer: AVAudioPlayer!
+    var fxOn = false
     
     let win = Bundle.main.url(forResource: "wins", withExtension: "wav")
     let lose = Bundle.main.url(forResource: "loses", withExtension: "wav")
@@ -94,7 +95,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     @IBAction func fxSwitch(_ sender: UIButton) {
-        fxPlayer.volume = 0
+        if fxOn {
+            sender.setTitle("fx off ", for: .normal)
+            fxOn = false
+        } else {
+            sender.setTitle("fx on ", for: .normal)
+            fxOn = true
+        }
     }
     
     
@@ -105,6 +112,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         scoreLabel.text = String(playerMoney)
         winLabel.text = "Place bet"
         validateBet()
+        for i in 0..<5 {
+            spinner.selectRow(0, inComponent: i, animated: true)
+        }
     }
     
     @IBAction func quitGame(_ sender: UIButton) {
@@ -335,67 +345,82 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     // MARK: SOUNDS
     
     func winSound() {
-        do {
-            fxPlayer = try AVAudioPlayer(contentsOf: win!)
-            fxPlayer.play()
-        } catch {
-            print(error.localizedDescription)
+        if fxOn {
+            do {
+                fxPlayer = try AVAudioPlayer(contentsOf: win!)
+                fxPlayer.play()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
     
     func loseSound() {
+        if fxOn {
         do {
             fxPlayer = try AVAudioPlayer(contentsOf: lose!)
             fxPlayer.play()
         } catch {
             print(error.localizedDescription)
         }
+        }
     }
 
     func spinSound() {
-        do {
-            fxPlayer = try AVAudioPlayer(contentsOf: spin!)
-            fxPlayer.play()
-        } catch {
-            print(error.localizedDescription)
+        if fxOn {
+            do {
+                fxPlayer = try AVAudioPlayer(contentsOf: spin!)
+                fxPlayer.play()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
     
     func jackPotSound() {
+        if fxOn {
         do {
             fxPlayer = try AVAudioPlayer(contentsOf: jack!)
             fxPlayer.play()
         } catch {
             print(error.localizedDescription)
         }
+        }
     }
     
     func minusSound() {
+        if fxOn {
         do {
             fxPlayer = try AVAudioPlayer(contentsOf: minus!)
             fxPlayer.play()
         } catch {
             print(error.localizedDescription)
         }
+        }
     }
     
     func plusSound() {
+        if fxOn {
         do {
             fxPlayer = try AVAudioPlayer(contentsOf: plus!)
             fxPlayer.play()
         } catch {
             print(error.localizedDescription)
         }
+        }
     }
     
     func gameOverSound() {
+        if fxOn {
         do {
             fxPlayer = try AVAudioPlayer(contentsOf: gameover!)
             fxPlayer.play()
         } catch {
             print(error.localizedDescription)
         }
+        }
     }
+        
     
     
     
