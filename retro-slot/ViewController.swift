@@ -1,8 +1,11 @@
 //
 //  ViewController.swift
-//  retro-slot
+//  RETRO SLOT MACHINE
 //
 //  Created by Sergey Kozak on 31/01/2018.
+//  Team members: Sergii Kozak 300979113, Serhii Sharipov 300961984, Irvinder Kaur 300929258
+//
+//
 //  Copyright © 2018 Centennial. All rights reserved.
 //
 
@@ -10,7 +13,10 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
+    // MARK: GAME VARIABLES
+    
+    // sounds setup
     var player: AVAudioPlayer!
     var fxPlayer: AVAudioPlayer!
     var fxOn = false
@@ -23,6 +29,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     let plus = Bundle.main.url(forResource: "plus", withExtension: "wav")
     let gameover = Bundle.main.url(forResource: "gameover", withExtension: "wav")
     
+    // Images and scores
     var images = [UIImage()]
     var playerBet = 0
     var playerMoney = 100
@@ -38,7 +45,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var cherries = 0
     var hearts = 0
 
-    
+    // MARK: IB OUTLETS
     @IBOutlet weak var spinner: UIPickerView!
     @IBOutlet weak var winLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -49,10 +56,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var musicButton: UIButton!
     @IBOutlet weak var fxButton: UIButton!
     
+    // MARK: VIEW DID LOAD
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Music setup
+        // Backgroundmusic setup
         do {
             let url = Bundle.main.url(forResource: "asteroid", withExtension: "mp3")!
             player = try AVAudioPlayer(contentsOf: url)
@@ -60,6 +69,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         } catch let error {
             print(error.localizedDescription)
         }
+        
+        // images for reels
         
         images = [
             UIImage(named: "shroom")!,
@@ -71,6 +82,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             UIImage(named: "joystick")!
         ]
         
+        // initial setup for picker and buttons
         
         spinner.showsSelectionIndicator = false
         scoreLabel.text = String(playerMoney)
@@ -82,7 +94,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     
-    // Controls
+    // MARK: GAME CONTROLS
     
     @IBAction func soundSwitch(_ sender: UIButton) {
         if player.isPlaying {
@@ -103,7 +115,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             fxOn = true
         }
     }
-    
     
     
     @IBAction func resetButton(_ sender: UIButton) {
@@ -132,7 +143,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         plusButton.isEnabled = playerMoney > playerBet ? true : false
     }
     
-    // bet buttons
+    // BET buttons actions
     @IBAction func bet(_ sender: UIButton) {
         
         switch sender.tag {
@@ -156,24 +167,23 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
+    // SPIN button action
     @IBAction func spin(_ sender: UIButton) {
         
             spinSound()
-
             spinResult = Reels()
             
             for i in 0..<5 {
                 spinner.selectRow(spinResult[i], inComponent: i, animated: true)
                 spinner.reloadComponent(i)
             }
-        
             determineWinnings();
-   
     }
+    
     
     // MARK: UTILITY FUNCTIONS
     
-    /* Check to see if the player won the jackpot */
+    // Jackpot function
     func checkJackPot() {
         /* compare two random values */
         let jackPotTry:Int = Int(drand48() * 51 + 1);
@@ -185,7 +195,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
-    /* Utility function to reset all fruit tallies */
+    // Reset all reels
     func resetFruitTally() {
          shrooms = 0
          invaders = 0
@@ -212,9 +222,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     
-    
-    
-    /* Utility function to check if a value falls within a range of bounds */
+    // Utility to check if number falls between bounds
     func checkRange(_ value:Int,_ lowerBounds:Int,_ upperBounds:Int) ->Int {
         if (value >= lowerBounds && value <= upperBounds)
         {
@@ -225,8 +233,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
-    /* When this function is called it determines the betLine results.
-     e.g. Bar - Orange - Banana */
+    // MARK: GAME LOGIC
     
     func Reels() -> [Int] {
         var betLine = [0, 0, 0, 0, 0];
@@ -235,7 +242,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         for spin in 0..<5 {
             outCome[spin] = Int((drand48() * 100) + 1);
             switch (outCome[spin]) {
-            case checkRange(outCome[spin], 20, 40): //20
+            case checkRange(outCome[spin], 10, 40): //30
                 betLine[spin] = 1;
                 shrooms+=1;
                 break;
@@ -259,7 +266,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 betLine[spin] = 6;
                 joysticks+=1;
                 break;
-            default://20
+            default: //20
                 betLine[spin] = 0;
                 hearts+=1;
                 break;
@@ -268,7 +275,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return betLine;
     }
     
-    /* This function calculates the player's winnings, if any */
+    // Calculate winnings
+    
     func determineWinnings()
     {
         var win = false;
@@ -319,7 +327,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
 
-    
     
     // MARK: PICKER IMPLEMENTATION
     

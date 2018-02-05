@@ -86,7 +86,7 @@
                                             <constraint firstAttribute="height" constant="30" id="JGQ-CJ-3RI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Zig" family="Zig" pointSize="12"/>
-                                        <state key="normal" title="quit">
+                                        <state key="normal" title="info">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -209,6 +209,34 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="32.833583208395808"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="rIF-6I-NWY">
+            <objects>
+                <viewController id="ZdJ-5M-6ag" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0oz-ta-194">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shroom" translatesAutoresizingMaskIntoConstraints="NO" id="cxQ-Me-doR">
+                                <rect key="frame" x="114" y="74" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQ5-3O-0t7">
+                                <rect key="frame" x="183" y="89" width="58" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Zig" family="Zig" pointSize="17"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.38431372549999998" green="0.52156862749999999" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="3ZK-OJ-wI7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fpD-p1-B52" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="821.60000000000002" y="32.833583208395808"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bet10" width="100" height="50"/>
@@ -217,6 +245,7 @@
         <image name="minus" width="50" height="50"/>
         <image name="plus" width="50" height="50"/>
         <image name="rightCloud" width="102" height="143"/>
+        <image name="shroom" width="97" height="97"/>
         <image name="spin" width="214" height="60"/>
     </resources>
 </document>
