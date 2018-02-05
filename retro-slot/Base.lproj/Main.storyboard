@@ -38,24 +38,37 @@
                                 <rect key="frame" x="273" y="65" width="102" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjz-Ja-zan">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="25" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjz-Ja-zan">
                                 <rect key="frame" x="16" y="20" width="343" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWu-Fb-DIM">
-                                        <rect key="frame" x="0.0" y="0.0" width="97.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="wit-WG-sLo"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Zig" family="Zig" pointSize="12"/>
-                                        <state key="normal" title="sound off">
+                                        <state key="normal" title="music off">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="soundSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zhf-E6-tJL"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQ9-I0-gqg">
+                                        <rect key="frame" x="122" y="0.0" width="65" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="k2f-Ye-DkA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Zig" family="Zig" pointSize="12"/>
+                                        <state key="normal" title="fx off">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="fxSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FWc-Uw-Nmf"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs3-mD-GFY">
-                                        <rect key="frame" x="122.5" y="0.0" width="98" height="30"/>
+                                        <rect key="frame" x="212" y="0.0" width="53.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="4S6-wf-cyg"/>
                                         </constraints>
@@ -68,7 +81,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8E-xD-fBe">
-                                        <rect key="frame" x="245.5" y="0.0" width="97.5" height="30"/>
+                                        <rect key="frame" x="290.5" y="0.0" width="52.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="JGQ-CJ-3RI"/>
                                         </constraints>
@@ -182,6 +195,7 @@
                     </view>
                     <connections>
                         <outlet property="betButton" destination="REz-yM-ZJk" id="TLy-BU-Erb"/>
+                        <outlet property="fxButton" destination="HQ9-I0-gqg" id="Ibr-NP-FTO"/>
                         <outlet property="minusButton" destination="4Wp-iS-9C3" id="UNS-Uh-BbB"/>
                         <outlet property="musicButton" destination="WWu-Fb-DIM" id="kZv-Jd-gTT"/>
                         <outlet property="plusButton" destination="Nzl-Sh-6jq" id="nR5-uY-fwa"/>

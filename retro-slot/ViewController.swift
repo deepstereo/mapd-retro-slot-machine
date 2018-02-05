@@ -10,9 +10,17 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    let url = Bundle.main.url(forResource: "asteroid", withExtension: "mp3")!
+
     var player: AVAudioPlayer!
+    var fxPlayer: AVAudioPlayer!
+    
+    let win = Bundle.main.url(forResource: "wins", withExtension: "wav")
+    let lose = Bundle.main.url(forResource: "loses", withExtension: "wav")
+    let spin = Bundle.main.url(forResource: "spin", withExtension: "wav")
+    let jack = Bundle.main.url(forResource: "jackpot", withExtension: "wav")
+    let minus = Bundle.main.url(forResource: "minus", withExtension: "wav")
+    let plus = Bundle.main.url(forResource: "plus", withExtension: "wav")
+    let gameover = Bundle.main.url(forResource: "gameover", withExtension: "wav")
     
     var images = [UIImage()]
     var playerBet = 0
@@ -38,15 +46,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var musicButton: UIButton!
+    @IBOutlet weak var fxButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Music setup
         do {
+            let url = Bundle.main.url(forResource: "asteroid", withExtension: "mp3")!
             player = try AVAudioPlayer(contentsOf: url)
-            player.volume = 0.5
-            player.prepareToPlay()
+            player.volume = 0.7
         } catch let error {
             print(error.localizedDescription)
         }
@@ -61,6 +70,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             UIImage(named: "joystick")!
         ]
         
+        
         spinner.showsSelectionIndicator = false
         scoreLabel.text = String(playerMoney)
         winLabel.text = "Place bet"
@@ -70,17 +80,24 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         arc4random_stir()
     }
     
+    
     // Controls
     
     @IBAction func soundSwitch(_ sender: UIButton) {
         if player.isPlaying {
             player.pause()
-            sender.setTitle("sound off", for: .normal)
+            sender.setTitle("music off", for: .normal)
         } else {
             player.play()
-            sender.setTitle("sound on", for: .normal)
+            sender.setTitle("music on ", for: .normal)
         }
     }
+    
+    @IBAction func fxSwitch(_ sender: UIButton) {
+        fxPlayer.volume = 0
+    }
+    
+    
     
     @IBAction func resetButton(_ sender: UIButton) {
         playerBet = 0
@@ -95,7 +112,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
 
     
-    // Game button actions
+    // MARK: GAME BUTTON ACTIONS
     
     // utility function to enable or disable bet buttons
     func validateBet() {
@@ -110,14 +127,17 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         switch sender.tag {
         case 0:
+            plusSound()
             playerBet = 10
             winLabel.text = "Your bet: \(playerBet)"
             validateBet()
         case 1:
+            minusSound()
             playerBet = playerBet - 10
             winLabel.text = "Your bet: \(playerBet)"
             validateBet()
         case 2:
+            plusSound()
             playerBet = playerBet + 10
             winLabel.text = "Your bet: \(playerBet)"
             validateBet()
@@ -127,8 +147,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     @IBAction func spin(_ sender: UIButton) {
+        
+            spinSound()
 
-            spinResult = Reels();
+            spinResult = Reels()
             
             for i in 0..<5 {
                 spinner.selectRow(spinResult[i], inComponent: i, animated: true)
@@ -162,12 +184,17 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
          joysticks = 0
          cherries = 0
          hearts = 0
-        if playerBet == 0 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute:  {
+        if playerBet == 0 && playerMoney > 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute:  {
                 self.winLabel.text = "Place bet"
             })
+        } else if playerMoney <= 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute:  {
+                self.winLabel.text = "Game Over!"
+                self.gameOverSound()
+            })
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute:  {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute:  {
                 self.winLabel.text = "Your bet: \(self.playerBet)"
             })
         }
@@ -270,22 +297,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             scoreLabel.text = String(playerMoney)
             resetFruitTally()
             checkJackPot()
+            winSound()
         } else {
             winLabel.text = "You lost!"
             playerMoney = playerMoney - winnings
             scoreLabel.text = String(playerMoney)
             playerBet = 0
             resetFruitTally()
+            loseSound()
         }
     }
     
+
     
     
-    
-    
-    
-    
-    // Pickerview implementation
+    // MARK: PICKER IMPLEMENTATION
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 5
@@ -306,13 +332,75 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return 130
     }
 
-   
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: SOUNDS
+    
+    func winSound() {
+        do {
+            fxPlayer = try AVAudioPlayer(contentsOf: win!)
+            fxPlayer.play()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func loseSound() {
+        do {
+            fxPlayer = try AVAudioPlayer(contentsOf: lose!)
+            fxPlayer.play()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 
+    func spinSound() {
+        do {
+            fxPlayer = try AVAudioPlayer(contentsOf: spin!)
+            fxPlayer.play()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func jackPotSound() {
+        do {
+            fxPlayer = try AVAudioPlayer(contentsOf: jack!)
+            fxPlayer.play()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func minusSound() {
+        do {
+            fxPlayer = try AVAudioPlayer(contentsOf: minus!)
+            fxPlayer.play()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func plusSound() {
+        do {
+            fxPlayer = try AVAudioPlayer(contentsOf: plus!)
+            fxPlayer.play()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func gameOverSound() {
+        do {
+            fxPlayer = try AVAudioPlayer(contentsOf: gameover!)
+            fxPlayer.play()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    
+    
+    
 
 }
 

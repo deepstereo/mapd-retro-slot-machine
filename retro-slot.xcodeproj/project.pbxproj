@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1320B6A82028174F009C7A97 /* asteroid.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1320B6A72028174F009C7A97 /* asteroid.mp3 */; };
+		1320B6AE20283100009C7A97 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1320B6AD20283100009C7A97 /* Sounds.swift */; };
+		1320B6B2202838A6009C7A97 /* spin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1320B6B1202838A6009C7A97 /* spin.wav */; };
+		1320B6B520283A6F009C7A97 /* loses.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1320B6B320283A6F009C7A97 /* loses.wav */; };
+		1320B6B620283A6F009C7A97 /* wins.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1320B6B420283A6F009C7A97 /* wins.wav */; };
+		1320B6B820283AFD009C7A97 /* jackpot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1320B6B720283AFD009C7A97 /* jackpot.wav */; };
+		1320B6BB20283B62009C7A97 /* minus.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1320B6B920283B62009C7A97 /* minus.wav */; };
+		1320B6BC20283B62009C7A97 /* plus.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1320B6BA20283B62009C7A97 /* plus.wav */; };
+		1320B6BE20283C5B009C7A97 /* gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1320B6BD20283C5B009C7A97 /* gameover.wav */; };
 		1397C37A202186620072EAAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1397C379202186620072EAAF /* AppDelegate.swift */; };
 		1397C37C202186620072EAAF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1397C37B202186620072EAAF /* ViewController.swift */; };
 		1397C37F202186620072EAAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1397C37D202186620072EAAF /* Main.storyboard */; };
@@ -18,6 +26,14 @@
 
 /* Begin PBXFileReference section */
 		1320B6A72028174F009C7A97 /* asteroid.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = asteroid.mp3; sourceTree = "<group>"; };
+		1320B6AD20283100009C7A97 /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		1320B6B1202838A6009C7A97 /* spin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = spin.wav; sourceTree = "<group>"; };
+		1320B6B320283A6F009C7A97 /* loses.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = loses.wav; sourceTree = "<group>"; };
+		1320B6B420283A6F009C7A97 /* wins.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wins.wav; sourceTree = "<group>"; };
+		1320B6B720283AFD009C7A97 /* jackpot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jackpot.wav; sourceTree = "<group>"; };
+		1320B6B920283B62009C7A97 /* minus.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = minus.wav; sourceTree = "<group>"; };
+		1320B6BA20283B62009C7A97 /* plus.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plus.wav; sourceTree = "<group>"; };
+		1320B6BD20283C5B009C7A97 /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover.wav; sourceTree = "<group>"; };
 		1397C376202186620072EAAF /* retro-slot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "retro-slot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1397C379202186620072EAAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1397C37B202186620072EAAF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +74,7 @@
 		1397C378202186620072EAAF /* retro-slot */ = {
 			isa = PBXGroup;
 			children = (
+				1320B6AD20283100009C7A97 /* Sounds.swift */,
 				1397C379202186620072EAAF /* AppDelegate.swift */,
 				1397C37B202186620072EAAF /* ViewController.swift */,
 				1397C37D202186620072EAAF /* Main.storyboard */,
@@ -66,6 +83,13 @@
 				1397C385202186620072EAAF /* Info.plist */,
 				1397C38B2021882A0072EAAF /* zig.ttf */,
 				1320B6A72028174F009C7A97 /* asteroid.mp3 */,
+				1320B6B1202838A6009C7A97 /* spin.wav */,
+				1320B6B720283AFD009C7A97 /* jackpot.wav */,
+				1320B6B320283A6F009C7A97 /* loses.wav */,
+				1320B6B420283A6F009C7A97 /* wins.wav */,
+				1320B6BD20283C5B009C7A97 /* gameover.wav */,
+				1320B6B920283B62009C7A97 /* minus.wav */,
+				1320B6BA20283B62009C7A97 /* plus.wav */,
 			);
 			path = "retro-slot";
 			sourceTree = "<group>";
@@ -129,11 +153,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1320B6BC20283B62009C7A97 /* plus.wav in Resources */,
 				1397C384202186620072EAAF /* LaunchScreen.storyboard in Resources */,
 				1397C38C2021882A0072EAAF /* zig.ttf in Resources */,
 				1397C381202186620072EAAF /* Assets.xcassets in Resources */,
+				1320B6B520283A6F009C7A97 /* loses.wav in Resources */,
+				1320B6B620283A6F009C7A97 /* wins.wav in Resources */,
+				1320B6BE20283C5B009C7A97 /* gameover.wav in Resources */,
+				1320B6B820283AFD009C7A97 /* jackpot.wav in Resources */,
 				1320B6A82028174F009C7A97 /* asteroid.mp3 in Resources */,
+				1320B6B2202838A6009C7A97 /* spin.wav in Resources */,
 				1397C37F202186620072EAAF /* Main.storyboard in Resources */,
+				1320B6BB20283B62009C7A97 /* minus.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1320B6AE20283100009C7A97 /* Sounds.swift in Sources */,
 				1397C37C202186620072EAAF /* ViewController.swift in Sources */,
 				1397C37A202186620072EAAF /* AppDelegate.swift in Sources */,
 			);
