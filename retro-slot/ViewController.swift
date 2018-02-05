@@ -21,17 +21,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     
     var images = [UIImage()]
-    var bet = 0
+    var playerBet = 0
+    var playerMoney = 50
+    
     
     @IBOutlet weak var spinner: UIPickerView!
     @IBOutlet weak var winLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var spinButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if bet == 0 {
+        if playerBet == 0 {
             spinButton.isEnabled = false
         }
         
@@ -46,7 +50,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         ]
         
         spinner.showsSelectionIndicator = false
+        scoreLabel.text = String(playerMoney)
         winLabel.text = "Choose bet"
+        minusButton.isEnabled = false
+        plusButton.isEnabled = false
+        spinButton.isEnabled = false
         arc4random_stir()
     }
     
@@ -64,64 +72,33 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     
     
-    // Actions
+    // Game button actions
     
-    @IBAction func spin(_ sender: UIButton) {
-        
-        var score = 1000
-        var numInRow = -1
-        var lastValue = -1
-        
-        for i in 0..<3 {
-            let newValue = Int(arc4random_uniform(UInt32(images.count)))
-            if newValue == lastValue {
-                numInRow += 1
-            } else {
-                numInRow = 1
-            }
-            
-            lastValue = newValue
-            spinner.selectRow(newValue, inComponent: i, animated: true)
-            spinner.reloadComponent(i)
-
-        }
-        
-            switch numInRow {
-            case 1:
-                winLabel.text = "You lost!"
-                score = score - bet
-                scoreLabel.text = String(score)
-            case 2:
-                winLabel.text = "You won!"
-                score = score + bet
-                scoreLabel.text = String(score)
-            case 3:
-                winLabel.text = "Jackpot!"
-                score = score + 60
-                scoreLabel.text = String(score)
-            default:
-                winLabel.text = ""
-            }
-        
-        bet = 0
+    // utility function to enable or disable bet buttons
+    func validateBet() {
+        spinButton.isEnabled = playerBet == 0 ? false : true
+        minusButton.isEnabled = playerBet >= 10 ? true : false
+        plusButton.isEnabled = playerMoney > playerBet ? true : false
     }
     
+    // bet buttons
     @IBAction func bet(_ sender: UIButton) {
+        
         switch sender.tag {
         case 0:
-            bet = 10
-            winLabel.text = "You bet 10"
-            spinButton.isEnabled = true
+            playerBet = 10
+            winLabel.text = "You bet \(playerBet)"
+            validateBet()
         case 1:
-            bet = 20
-            winLabel.text = "You bet 20"
-            spinButton.isEnabled = true
+            playerBet = playerBet - 10
+            winLabel.text = "You bet \(playerBet)"
+            validateBet()
         case 2:
-            bet = 30
-            winLabel.text = "You bet 30"
-            spinButton.isEnabled = true
+            playerBet = playerBet + 10
+            winLabel.text = "You bet \(playerBet)"
+            validateBet()
         default:
-            print(bet)
+            print(playerBet)
         }
     }
     
@@ -129,7 +106,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     // Pickerview implementation
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
+        return 5
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -146,8 +123,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 130
     }
-    
-    
+
    
 
     override func didReceiveMemoryWarning() {

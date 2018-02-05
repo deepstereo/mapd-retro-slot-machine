@@ -114,21 +114,21 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Wor-ff-Xiw">
                                         <rect key="frame" x="0.0" y="0.0" width="214" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wp-iS-9C3">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Wp-iS-9C3">
                                                 <rect key="frame" x="0.0" y="0.0" width="54" height="50"/>
                                                 <state key="normal" image="minus"/>
                                                 <connections>
                                                     <action selector="bet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QsU-yo-hd2"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REz-yM-ZJk">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REz-yM-ZJk">
                                                 <rect key="frame" x="59" y="0.0" width="100" height="50"/>
                                                 <state key="normal" image="bet10"/>
                                                 <connections>
                                                     <action selector="bet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1PL-cM-DlW"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzl-Sh-6jq">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nzl-Sh-6jq">
                                                 <rect key="frame" x="164" y="0.0" width="50" height="50"/>
                                                 <state key="normal" image="plus"/>
                                                 <connections>
@@ -140,13 +140,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eiq-mJ-eDS">
                                         <rect key="frame" x="0.0" y="55" width="214" height="60"/>
                                         <state key="normal" image="spin"/>
-                                        <connections>
-                                            <action selector="spin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="apR-Gr-J5h"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtf-6A-2FT">
+                            <pickerView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="jtf-6A-2FT">
                                 <rect key="frame" x="16" y="231" width="343" height="130"/>
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -181,6 +178,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="minusButton" destination="4Wp-iS-9C3" id="UNS-Uh-BbB"/>
+                        <outlet property="plusButton" destination="Nzl-Sh-6jq" id="nR5-uY-fwa"/>
                         <outlet property="scoreLabel" destination="BEf-td-1Mu" id="bhg-XT-Htu"/>
                         <outlet property="spinButton" destination="Eiq-mJ-eDS" id="rPU-Ym-hg2"/>
                         <outlet property="spinner" destination="jtf-6A-2FT" id="ajy-Vl-JqM"/>
