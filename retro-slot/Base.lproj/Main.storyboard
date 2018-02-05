@@ -47,7 +47,7 @@
                                             <constraint firstAttribute="height" constant="30" id="wit-WG-sLo"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Zig" family="Zig" pointSize="12"/>
-                                        <state key="normal" title="sound on">
+                                        <state key="normal" title="sound off">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -91,7 +91,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Bwx-Qt-qsE">
                                 <rect key="frame" x="127.5" y="80" width="120" height="52.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0J-FM-vK9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="You have" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0J-FM-vK9">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="18"/>
                                         <fontDescription key="fontDescription" name="Zig" family="Zig" pointSize="18"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -183,6 +183,7 @@
                     <connections>
                         <outlet property="betButton" destination="REz-yM-ZJk" id="TLy-BU-Erb"/>
                         <outlet property="minusButton" destination="4Wp-iS-9C3" id="UNS-Uh-BbB"/>
+                        <outlet property="musicButton" destination="WWu-Fb-DIM" id="kZv-Jd-gTT"/>
                         <outlet property="plusButton" destination="Nzl-Sh-6jq" id="nR5-uY-fwa"/>
                         <outlet property="scoreLabel" destination="BEf-td-1Mu" id="bhg-XT-Htu"/>
                         <outlet property="spinButton" destination="Eiq-mJ-eDS" id="rPU-Ym-hg2"/>

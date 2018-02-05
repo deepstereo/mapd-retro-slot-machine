@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    let url = Bundle.main.url(forResource: "asteroid", withExtension: "mp3")!
+    var player: AVAudioPlayer!
     
     var images = [UIImage()]
     var playerBet = 0
@@ -33,12 +37,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var betButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var musicButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if playerBet == 0 {
-            spinButton.isEnabled = false
+        // Music setup
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player.volume = 0.5
+            player.prepareToPlay()
+        } catch let error {
+            print(error.localizedDescription)
         }
         
         images = [
@@ -63,6 +73,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     // Controls
     
     @IBAction func soundSwitch(_ sender: UIButton) {
+        if player.isPlaying {
+            player.pause()
+            sender.setTitle("sound off", for: .normal)
+        } else {
+            player.play()
+            sender.setTitle("sound on", for: .normal)
+        }
     }
     
     @IBAction func resetButton(_ sender: UIButton) {
@@ -76,15 +93,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBAction func quitGame(_ sender: UIButton) {
         exit(0)
     }
-    
-    
+
     
     // Game button actions
     
     // utility function to enable or disable bet buttons
     func validateBet() {
         spinButton.isEnabled = playerBet == 0 || playerMoney <= 0 ? false : true
-        betButton.isEnabled = playerMoney >= 0 ? true : false
+        betButton.isEnabled = playerMoney > 0 ? true : false
         minusButton.isEnabled = playerBet >= 10 ? true : false
         plusButton.isEnabled = playerMoney > playerBet ? true : false
     }
@@ -124,6 +140,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     // MARK: UTILITY FUNCTIONS
+    
+    /* Check to see if the player won the jackpot */
+    func checkJackPot() {
+        /* compare two random values */
+        let jackPotTry:Int = Int(drand48() * 51 + 1);
+        let jackPotWin:Int = Int(drand48() * 51 + 1);
+        if (jackPotTry == jackPotWin) {
+            winLabel.text = "Jackpot: \(jackpot) !!!"
+            playerMoney += jackpot;
+            jackpot = 1000;
+        }
+    }
     
     /* Utility function to reset all fruit tallies */
     func resetFruitTally() {
@@ -174,19 +202,19 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 betLine[spin] = 1;
                 shrooms+=1;
                 break;
-            case checkRange(outCome[spin], 40, 60)://20
+            case checkRange(outCome[spin], 40, 60): //20
                 betLine[spin] = 2;
                 invaders+=1;
                 break;
-            case checkRange(outCome[spin], 60, 75)://15
+            case checkRange(outCome[spin], 60, 75): //15
                 betLine[spin] = 3;
                 stars+=1;
                 break;
-            case checkRange(outCome[spin], 75, 85)://10
+            case checkRange(outCome[spin], 75, 85): //10
                 betLine[spin] = 4;
                 wizards+=1;
                 break;
-            case checkRange(outCome[spin], 85, 95)://10
+            case checkRange(outCome[spin], 85, 95): //10
                 betLine[spin] = 5;
                 cherries+=1;
                 break;
@@ -241,6 +269,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             playerMoney = playerMoney + winnings
             scoreLabel.text = String(playerMoney)
             resetFruitTally()
+            checkJackPot()
         } else {
             winLabel.text = "You lost!"
             playerMoney = playerMoney - winnings
