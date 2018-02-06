@@ -281,31 +281,31 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     {
         var win = false;
         if (shrooms >= 3) {
-            winnings = playerBet * (shrooms-2);
+            winnings = playerBet * (shrooms-2)
             win=true;
         }
         else if(hearts >= 3) {
-            winnings = playerBet * (hearts-1);
+            winnings = playerBet * (hearts-1)
             win=true;
         }
         else if (invaders >= 3) {
-            winnings = playerBet * (invaders);
+            winnings = playerBet * (invaders)
             win=true;
         }
         else if (stars >= 3) {
-            winnings = playerBet * (stars + 1);
+            winnings = playerBet * (stars + 1)
             win=true;
         }
         else if (wizards >= 3) {
-            winnings = playerBet * (wizards + 2);
+            winnings = playerBet * (wizards + 2)
             win=true;
         }
         else if (hearts >= 3) {
-            winnings = playerBet * (hearts + 3);
+            winnings = playerBet * (hearts + 3)
             win=true;
         }
         else if (joysticks >= 3) {
-            winnings = playerBet * (joysticks + 4);
+            winnings = playerBet * (joysticks + 4)
             win=true;
         }
         
@@ -318,7 +318,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             winSound()
         } else {
             winLabel.text = "You lost!"
-            playerMoney = playerMoney - winnings
+            playerMoney = playerMoney - playerBet
             scoreLabel.text = String(playerMoney)
             playerBet = 0
             resetFruitTally()
